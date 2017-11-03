@@ -1,1 +1,1 @@
-include ':app', ':acc'
+include ':app', ':acc', ':ainject'
