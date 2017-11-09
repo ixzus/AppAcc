@@ -21,12 +21,20 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+//    dexOptions {
+//        dexInProcess true
+//        preDexLibraries true
+//        javaMaxHeapSize "4g"
+//        incremental true
+//    }
 
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     implementation librarys.appcompatV7
     implementation librarys.constraint
 

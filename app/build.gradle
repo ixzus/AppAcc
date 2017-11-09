@@ -7,6 +7,10 @@ apply plugin: 'kotlin-android-extensions'
 def config = rootProject.ext.android
 def librarys = rootProject.ext.dependencies
 
+def keystorePropertiesFile = rootProject.file("local.properties")
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
 android {
     compileSdkVersion config.compileSdkVersion
     defaultConfig {
@@ -17,19 +21,108 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         release {
             minifyEnabled false
+            zipAlignEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+
+        debug {
+            minifyEnabled false
+            zipAlignEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//            applicationVariants.all { variant ->
+//                if (variant.buildType.name == 'debug') {
+//                    variant.outputs.all { output ->
+//                        def outputFile = output.outputFile
+//                        if (outputFile != null && outputFile.name.endsWith('.apk')) {
+//                            def fileName = "ixzus-${defaultConfig.versionName}_${variant.flavorName}.apk"
+//                            output.outputFileName = new File(outputFile.parent, fileName)
+//                        }
+//                    }
+//                }
+//            }
+        }
     }
+
+    signingConfigs {
+        debug {
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile file(keystoreProperties['storeFile'])
+            storePassword keystoreProperties['storePassword']
+        }
+        release {
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile file(keystoreProperties['storeFile'])
+            storePassword keystoreProperties['storePassword']
+        }
+    }
+//    dexOptions {
+//        dexInProcess true
+//        preDexLibraries true
+//        javaMaxHeapSize "4g"
+//        incremental true
+//    }
+
+    // flavorDimensions dimension 可以组合 如: 是否免费*渠道 2*2 [freegoogleplay'freewandoujia,paidgoogleplay,paidwandoujia]
+//        flavorDimensions("isfree", "channel")
+//        productFlavors {
+//            free {dimension "isfree"}
+//            paid {dimension "isfree"}
+//
+//            googleplay {dimension "channel"}
+//            wandoujia {dimension "channel"}
+//        }
+    flavorDimensions "default"
+    productFlavors {
+        //如果需要不同的源代码或资源文件，可以在app/src下新建一个名为“flavor名”的目录（oem1）。也就是app/src/oem1
+        //resConfigs 指定一种屏幕密度
+        app {
+            dimension "default"
+            applicationId "com.example.ixzus.appacc"
+//            resValue "string", "app_name", "appacc"
+//            minSdkVersion 21
+//            resConfigs "xxhdpi"
+//            versionCode 1
+            manifestPlaceholders = [UMENG_APPKEY: "我的友盟KEY"]
+            signingConfig signingConfigs.debug
+        }
+
+        oem1 {
+            dimension "default"
+            applicationId "com.example.ixzus.oem1"
+//            resValue "string", "app_name", "oem1"
+//            minSdkVersion 19
+//            resConfigs "xhdpi"
+//            versionCode 1
+            manifestPlaceholders = [UMENG_APPKEY: "我的友盟KEY"]
+            signingConfig signingConfigs.debug
+        }
+
+        oem2 {
+            dimension "default"
+            applicationId "com.example.ixzus.appacc.oem2"
+//            resValue "string", "app_name", "oem2"
+//            minSdkVersion 19
+//            resConfigs "xhdpi"
+//            versionCode 1
+            manifestPlaceholders = [UMENG_APPKEY: "我的友盟KEY"]
+            signingConfig signingConfigs.debug
+        }
+
+    }
+
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:26.1.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation librarys.kotlinJre7
+    implementation librarys.appcompatV7
+    implementation librarys.constraint
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
