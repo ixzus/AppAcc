@@ -1,15 +1,16 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-def config = rootProject.ext.android
-def librarys = rootProject.ext.dependencies
+
+def androidlib = rootProject.ext.android
+def dependencieslib = rootProject.ext.dependencies
 android {
-    compileSdkVersion config.compileSdkVersion
+    compileSdkVersion androidlib.compileSdkVersion
 
     defaultConfig {
         applicationId "com.example.ixzus.acc"
-        minSdkVersion config.minSdkVersion
-        targetSdkVersion config.targetSdkVersion
+        minSdkVersion androidlib.minSdkVersion
+        targetSdkVersion androidlib.targetSdkVersion
         versionCode 1
         versionName "1.0"
 
@@ -23,20 +24,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-//    dexOptions {
-//        dexInProcess true
-//        preDexLibraries true
-//        javaMaxHeapSize "4g"
-//        incremental true
-//    }
+
 
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation librarys.kotlinJre7
-    implementation librarys.appcompatV7
-    implementation librarys.constraint
+    implementation dependencieslib.kotlin
+    implementation dependencieslib.appcompatV7
+    implementation dependencieslib.constraint
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'

@@ -1,22 +1,19 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
-
-def config = rootProject.ext.android
-def librarys = rootProject.ext.dependencies
+def androidlib = rootProject.ext.android
+def dependencieslib = rootProject.ext.dependencies
 
 def keystorePropertiesFile = rootProject.file("local.properties")
 def keystoreProperties = new Properties()
 keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
 android {
-    compileSdkVersion config.compileSdkVersion
+    compileSdkVersion androidlib.compileSdkVersion
     defaultConfig {
         applicationId "com.example.ixzus.appacc"
-        minSdkVersion config.minSdkVersion
-        targetSdkVersion config.targetSdkVersion
+        minSdkVersion androidlib.minSdkVersion
+        targetSdkVersion androidlib.targetSdkVersion
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -120,10 +117,14 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation librarys.kotlinJre7
-    implementation librarys.appcompatV7
-    implementation librarys.constraint
+    implementation dependencieslib.kotlin
+    implementation dependencieslib.appcompatV7
+    implementation dependencieslib.constraint
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
+    compile 'com.google.dagger:dagger:2.12'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.12'
+
 }
