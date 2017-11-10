@@ -7,8 +7,8 @@ android {
         applicationId "com.example.ixzus.ainject"
         minSdkVersion androidlib.minSdkVersion
         targetSdkVersion androidlib.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode androidlib.versionCode
+        versionName androidlib.versionName
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -25,9 +25,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
     implementation dependencieslib.appcompatV7
     implementation dependencieslib.constraint
 

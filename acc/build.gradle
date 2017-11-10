@@ -11,8 +11,8 @@ android {
         applicationId "com.example.ixzus.acc"
         minSdkVersion androidlib.minSdkVersion
         targetSdkVersion androidlib.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode androidlib.versionCode
+        versionName androidlib.versionName
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -33,7 +33,5 @@ dependencies {
     implementation dependencieslib.kotlin
     implementation dependencieslib.appcompatV7
     implementation dependencieslib.constraint
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
 }
