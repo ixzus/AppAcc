@@ -31,7 +31,17 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation dependencieslib.kotlin
+    implementation dependencieslib.supportV4
     implementation dependencieslib.appcompatV7
     implementation dependencieslib.constraint
+
+    implementation dependencieslib.retrofit
+    implementation dependencieslib.retrofitGson
+
+    implementation dependencieslib.dagger
+    annotationProcessor  dependencieslib.daggerCompiler
+
+    implementation "android.arch.lifecycle:extensions:1.0.0"
+    implementation "android.arch.persistence.room:runtime:1.0.0"
 
 }
