@@ -1,8 +1,9 @@
 package com.example.ixzus.acc.data.webservice;
 
-import com.example.ixzus.acc.ListFragment;
+import com.example.ixzus.acc.ProductListFragment;
 import com.example.ixzus.acc.MainActivity;
-import com.example.ixzus.acc.data.DryGoodsRepository;
+import com.example.ixzus.acc.data.ProductRepository;
+import com.example.ixzus.acc.viewmodel.ProductListViewModel;
 
 import javax.inject.Singleton;
 
@@ -16,7 +17,7 @@ import dagger.Component;
 public interface ApiComponent {
     void inject(MainActivity activity);
 
-//    void inject(ListFragment fragment);
+    void inject(ProductListFragment fragment);
 
-    void inject(DryGoodsRepository repository);
+    void inject(ProductListViewModel viewModel);
 }

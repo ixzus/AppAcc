@@ -9,7 +9,7 @@ import java.util.List;
  * Created by huan on 2017/11/13.
  */
 @Entity
-public class DryGoods {
+public class Product {
     @PrimaryKey
     private String _id;
     private String createdAt;

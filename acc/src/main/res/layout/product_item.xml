@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="product"
+            type="com.example.ixzus.acc.data.db.entity.Product" />
+
+        <variable
+            name="callback"
+            type="com.example.ixzus.acc.ui.ProductClickCallback" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{()-> callback.onClick(product)}">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Android"
+            android:layout_margin="8dp"
+            android:text="@{@string/author(product.who)}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_below="@+id/name"
+            tools:text="Android Desc"
+            android:text="@{@string/desc(product.desc)}" />
+
+    </RelativeLayout>
+
+</layout>

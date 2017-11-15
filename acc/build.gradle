@@ -25,6 +25,9 @@ android {
         }
     }
 
+    dataBinding {
+        enabled = true
+    }
 
 }
 
@@ -33,13 +36,15 @@ dependencies {
     implementation dependencieslib.kotlin
     implementation dependencieslib.supportV4
     implementation dependencieslib.appcompatV7
+    implementation dependencieslib.recyclerview
     implementation dependencieslib.constraint
 
     implementation dependencieslib.retrofit
     implementation dependencieslib.retrofitGson
 
     implementation dependencieslib.dagger
-    annotationProcessor  dependencieslib.daggerCompiler
+    implementation 'com.android.support:support-v4:26.0.0-beta1'
+    annotationProcessor dependencieslib.daggerCompiler
 
     implementation "android.arch.lifecycle:extensions:1.0.0"
     implementation "android.arch.persistence.room:runtime:1.0.0"
