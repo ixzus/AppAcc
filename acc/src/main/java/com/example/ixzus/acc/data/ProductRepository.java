@@ -2,10 +2,9 @@ package com.example.ixzus.acc.data;
 
 import android.arch.lifecycle.MutableLiveData;
 
-import com.example.ixzus.acc.data.db.dao.ProductDao;
 import com.example.ixzus.acc.data.db.entity.Product;
 import com.example.ixzus.acc.data.webservice.WebService;
-import com.example.ixzus.acc.data.webservice.entity.DryGoodsRst;
+import com.example.ixzus.acc.data.webservice.entity.ProductRst;
 
 import java.util.List;
 
@@ -21,37 +20,28 @@ import retrofit2.Response;
  */
 @Singleton
 public class ProductRepository {
-    //    @Inject
-//    WebService webService;
-    private final WebService webService;
-    private final ProductDao dao;
+    private WebService webService;
 
     @Inject
-    public ProductRepository(WebService webService, ProductDao dao) {
+    public ProductRepository(WebService webService) {
         this.webService = webService;
-        this.dao = dao;
     }
 
-    public MutableLiveData<List<Product>> getDryGoods(String type, int pageSize, int pageNo) {
-        refreshDryGoods(type, pageSize, pageNo);
-        return dao.loadByType(type);
-    }
-
-    private void refreshDryGoods(String type, int pageSize, int pageNo) {
-        final MutableLiveData<DryGoodsRst> data = new MutableLiveData<>();
-        webService.getDryGoods(type, pageSize, pageNo).enqueue(new Callback<DryGoodsRst>() {
+    public MutableLiveData<List<Product>> getProducts(String type, int pageSize, int pageNo) {
+        final MutableLiveData<List<Product>> data = new MutableLiveData<>();
+        webService.getDryGoods(type, pageSize, pageNo).enqueue(new Callback<ProductRst>() {
             @Override
-            public void onResponse(Call<DryGoodsRst> call, Response<DryGoodsRst> response) {
-                data.setValue(response.body());
-                dao.insertAll(response.body().getResults());
+            public void onResponse(Call<ProductRst> call, Response<ProductRst> response) {
+                // error case is left out for brevity
+                data.setValue(response.body().getResults());
             }
 
             @Override
-            public void onFailure(Call<DryGoodsRst> call, Throwable t) {
+            public void onFailure(Call<ProductRst> call, Throwable t) {
 
             }
         });
+        return data;
     }
-
 
 }

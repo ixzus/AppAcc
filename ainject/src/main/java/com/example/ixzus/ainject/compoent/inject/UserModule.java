@@ -19,41 +19,41 @@ import dagger.Provides;
 @Module
 public class UserModule {
     private static final String TAG = "UserModule";
-
-    private Context mContext;
-
-    public UserModule(Context context) {
-        this.mContext = context;
-    }
-
+//
+//    private Context mContext;
+//
+//    public UserModule(Context context) {
+//        this.mContext = context;
+//    }
+//
     @Provides
     public ApiServer providApiServer() {
         Log.e(TAG, "providApiServer()");
         return new ApiServer();
     }
 
-    @Provides
-    public UserStor providUserStor(){
-        Log.e(TAG, "providStor()");
-        return new UserStor();
-    }
-
-
-    @Named("TypeA")
-    @Provides
-    public UserManager providUserManagerA(ApiServer apiServer) {
-        Log.e(TAG, "providUserManager(ApiServer apiServer)");
-        return new UserManager(apiServer);
-    }
-
-    @Named("TypeB")
-    @Provides
-    public UserManager providUserManagerB(UserStor userStor) {
-        Log.e(TAG, "providUserManager(UserStor userStor)");
-        return new UserManager(userStor);
-    }
-
-    @Named("TypeAll")
+//    @Provides
+//    public UserStor providUserStor(){
+//        Log.e(TAG, "providStor()");
+//        return new UserStor();
+//    }
+//
+//
+//    @Named("TypeA")
+//    @Provides
+//    public UserManager providUserManagerA(ApiServer apiServer) {
+//        Log.e(TAG, "providUserManager(ApiServer apiServer)");
+//        return new UserManager(apiServer);
+//    }
+//
+//    @Named("TypeB")
+//    @Provides
+//    public UserManager providUserManagerB(UserStor userStor) {
+//        Log.e(TAG, "providUserManager(UserStor userStor)");
+//        return new UserManager(userStor);
+//    }
+//
+//    @Named("TypeAll")
     @Provides
     public UserManager providUserManagerAll(ApiServer apiServer, UserStor userStor) {
         Log.e(TAG, "providUserManager(ApiServer apiServer, UserStor userStor)");

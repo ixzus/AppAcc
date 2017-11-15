@@ -8,7 +8,7 @@ import java.util.List;
  * Created by huan on 2017/11/13.
  */
 
-public class DryGoodsRst {
+public class ProductRst {
 
     /**
      * error : false

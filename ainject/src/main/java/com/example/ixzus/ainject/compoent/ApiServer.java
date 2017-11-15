@@ -2,6 +2,8 @@ package com.example.ixzus.ainject.compoent;
 
 import android.util.Log;
 
+import javax.inject.Inject;
+
 
 /**
  * Created by huan on 2017/11/3.
@@ -10,6 +12,7 @@ import android.util.Log;
 public class ApiServer {
     private static final String TAG = "ApiServer";
 
+//    @Inject
     public ApiServer() {
         Log.e(TAG, "ApiServer()");
     }

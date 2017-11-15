@@ -3,6 +3,7 @@ package com.example.ixzus.acc;
 
 import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -15,12 +16,16 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.ixzus.acc.data.db.entity.Product;
+import com.example.ixzus.acc.data.webservice.DaggerApiComponent;
 import com.example.ixzus.acc.databinding.ListFragmentBinding;
 import com.example.ixzus.acc.ui.ProductAdapter;
 import com.example.ixzus.acc.ui.ProductClickCallback;
 import com.example.ixzus.acc.viewmodel.ProductListViewModel;
+import com.example.ixzus.acc.viewmodel.ViewModelFactory;
 
 import java.util.List;
+
+import javax.inject.Inject;
 
 
 public class ProductListFragment extends Fragment {
@@ -32,12 +37,12 @@ public class ProductListFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    //    @Inject
-//    WebService webService;
-//    private ProductListViewModel viewModel;
 
     private ProductAdapter mAdapter;
     private ListFragmentBinding mBinding;
+
+    @Inject
+    ViewModelProvider.Factory viewModelFactory;
 
     public ProductListFragment() {
     }
@@ -72,36 +77,14 @@ public class ProductListFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-//        DaggerApiComponent.create().inject(this);
-//        Call<DryGoodsRst> dryGoodsCall = webService.getDryGoods("Android", 10, 1);
-//        dryGoodsCall.enqueue(new Callback<DryGoodsRst>() {
-//            @Override
-//            public void onResponse(Call<DryGoodsRst> call, Response<DryGoodsRst> response) {
-//
-//            }
-//
-//            @Override
-//            public void onFailure(Call<DryGoodsRst> call, Throwable t) {
-//
-//            }
-//        });
-
-//        viewModel = ViewModelProviders.of(this).get(ProductListViewModel.class);
-//        final Observer<Product> observer = new Observer<Product>() {
-//            @Override
-//            public void onChanged(@Nullable Product dryGoods) {
-//                Log.e(TAG, "onChanged: " + dryGoods.getType());
-//            }
-//        };
-//        viewModel.init("Android", 10, 1);
-//        viewModel.getDryGoods().observe(this, observer);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         //ui
-        final ProductListViewModel viewModel = ViewModelProviders.of(this).get(ProductListViewModel.class);
+        DaggerApiComponent.create().inject(this);
+        ProductListViewModel viewModel = ViewModelProviders.of(this,viewModelFactory).get(ProductListViewModel.class);
         subscribeUi(viewModel);
     }
 

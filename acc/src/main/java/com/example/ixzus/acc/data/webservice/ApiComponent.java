@@ -20,4 +20,6 @@ public interface ApiComponent {
     void inject(ProductListFragment fragment);
 
     void inject(ProductListViewModel viewModel);
+
+    void inject(ProductRepository repository);
 }

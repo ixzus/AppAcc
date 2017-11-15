@@ -2,6 +2,8 @@ package com.example.ixzus.ainject.compoent;
 
 import android.util.Log;
 
+import javax.inject.Inject;
+
 /**
  * Created by huan on 2017/11/3.
  */
@@ -11,16 +13,17 @@ public class UserManager {
     private ApiServer apiServer;
     private UserStor userStor;
 
-    public UserManager(ApiServer apiServer) {
-        Log.e(TAG, "UserManager(ApiServer apiServer)" );
-        this.apiServer = apiServer;
-    }
+//    public UserManager(ApiServer apiServer) {
+//        Log.e(TAG, "UserManager(ApiServer apiServer)" );
+//        this.apiServer = apiServer;
+//    }
+//
+//    public UserManager(UserStor userStor) {
+//        Log.e(TAG, "UserManager(ApiServer userStor)" );
+//        this.userStor = userStor;
+//    }
 
-    public UserManager(UserStor userStor) {
-        Log.e(TAG, "UserManager(ApiServer userStor)" );
-        this.userStor = userStor;
-    }
-
+    @Inject
     public UserManager(ApiServer apiServer, UserStor userStor) {
         Log.e(TAG, "UserManager(ApiServer apiServer, UserStor userStor)" );
         this.apiServer = apiServer;

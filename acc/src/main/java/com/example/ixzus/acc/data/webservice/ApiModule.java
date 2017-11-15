@@ -1,5 +1,11 @@
 package com.example.ixzus.acc.data.webservice;
 
+import android.arch.lifecycle.ViewModelProvider;
+
+import com.example.ixzus.acc.data.ProductRepository;
+import com.example.ixzus.acc.viewmodel.ProductListViewModel;
+import com.example.ixzus.acc.viewmodel.ViewModelFactory;
+
 import java.util.concurrent.TimeUnit;
 
 import javax.inject.Singleton;
@@ -39,5 +45,22 @@ public class ApiModule {
                 .writeTimeout(8, TimeUnit.SECONDS)
                 .connectTimeout(8, TimeUnit.SECONDS)
                 .build();
+    }
+
+//    @Provides
+//    @Singleton
+//    ProductRepository provideProductRepository(WebService webService) {
+//        return new ProductRepository(webService);
+//    }
+//
+//    @Provides
+//    @Singleton
+//    ProductListViewModel privideProductListViewModel(ProductRepository repository) {
+//        return new ProductListViewModel(repository);
+//    }
+
+    @Provides
+    ViewModelProvider.Factory provideViewModelProviderFactory(ViewModelFactory viewModelFactory) {
+        return viewModelFactory;
     }
 }
