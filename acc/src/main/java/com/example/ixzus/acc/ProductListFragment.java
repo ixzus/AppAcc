@@ -89,8 +89,7 @@ public class ProductListFragment extends Fragment {
     }
 
     private void subscribeUi(ProductListViewModel viewModel) {
-        viewModel.init("Android", 10, 1);
-        viewModel.getDryGoods().observe(this, new Observer<List<Product>>() {
+        viewModel.getDryGoods("Android", 10, 1).observe(this, new Observer<List<Product>>() {
             @Override
             public void onChanged(@Nullable List<Product> products) {
                 Log.e(TAG, "onChanged: " + products.size());

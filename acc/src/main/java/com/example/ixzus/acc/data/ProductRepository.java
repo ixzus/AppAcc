@@ -1,7 +1,10 @@
 package com.example.ixzus.acc.data;
 
+import android.app.Application;
+import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 
+import com.example.ixzus.acc.data.db.DatabaseCreator;
 import com.example.ixzus.acc.data.db.entity.Product;
 import com.example.ixzus.acc.data.webservice.WebService;
 import com.example.ixzus.acc.data.webservice.entity.ProductRst;
@@ -28,6 +31,8 @@ public class ProductRepository {
     }
 
     public MutableLiveData<List<Product>> getProducts(String type, int pageSize, int pageNo) {
+//        DatabaseCreator databaseCreator = DatabaseCreator.getInstance(application);
+//        LiveData<Boolean> databaseCreated = databaseCreator.isDatabaseCreated();
         final MutableLiveData<List<Product>> data = new MutableLiveData<>();
         webService.getDryGoods(type, pageSize, pageNo).enqueue(new Callback<ProductRst>() {
             @Override

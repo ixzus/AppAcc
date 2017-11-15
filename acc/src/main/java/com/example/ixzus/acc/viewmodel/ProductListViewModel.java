@@ -17,7 +17,7 @@ import javax.inject.Inject;
 public class ProductListViewModel extends ViewModel {
     private MutableLiveData<List<Product>> mObasevableProducts;
 
-    private  ProductRepository repository;
+    private ProductRepository repository;
 
     @Inject
     public ProductListViewModel(ProductRepository repository) {
@@ -25,14 +25,16 @@ public class ProductListViewModel extends ViewModel {
     }
 
 
-    public void init(String type, int pageSize, int pageNo) {
-        if (this.mObasevableProducts != null)
-            return;
-        mObasevableProducts = repository.getProducts(type, pageSize, pageNo);
+    public MutableLiveData<List<Product>> getDryGoods(String type, int pageSize, int pageNo) {
+        if (this.mObasevableProducts == null) {
+            mObasevableProducts = new MutableLiveData<>();
+            loadData(type, pageSize, pageNo);
+        }
+        return mObasevableProducts;
     }
 
-    public MutableLiveData<List<Product>> getDryGoods() {
-        return this.mObasevableProducts;
+    private void loadData(String type, int pageSize, int pageNo) {
+        mObasevableProducts = repository.getProducts(type, pageSize, pageNo);
     }
 
 }

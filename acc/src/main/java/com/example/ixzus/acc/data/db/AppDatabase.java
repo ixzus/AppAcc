@@ -17,5 +17,5 @@ public abstract class AppDatabase extends RoomDatabase {
 
     static final String DATABASE_NAME = "app-acc-db";
 
-    public abstract ProductDao dryGoodsDao();
+    public abstract ProductDao productDao();
 }

@@ -24,7 +24,7 @@ public interface ProductDao {
     void insert(Product product);
 
     @Insert(onConflict = REPLACE)
-    void insertAll(List<Product> listDryGoods);
+    void insertAll(MutableLiveData<List<Product>> listDryGoods);
 
     @Delete
     void delete(Product product);
