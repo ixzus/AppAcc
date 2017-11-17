@@ -2,7 +2,8 @@ package com.example.ixzus.acc.data.webservice;
 
 import com.example.ixzus.acc.data.webservice.entity.ProductRst;
 
-import retrofit2.Call;
+
+import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 
@@ -13,6 +14,6 @@ import retrofit2.http.Path;
 public interface WebService {
 
     @GET("data/{type}/{pageSize}/{pageNo}")
-    Call<ProductRst> getDryGoods(@Path("type") String type, @Path("pageSize") int pageSize, @Path("pageNo") int pageNo);
+    Observable<ProductRst> getDryGoods(@Path("type") String type, @Path("pageSize") int pageSize, @Path("pageNo") int pageNo);
 
 }

@@ -1,5 +1,6 @@
 package com.example.ixzus.acc.viewmodel;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 
@@ -15,7 +16,7 @@ import javax.inject.Inject;
  */
 
 public class ProductListViewModel extends ViewModel {
-    private MutableLiveData<List<Product>> mObasevableProducts;
+    private LiveData<List<Product>> mObasevableProducts;
 
     private ProductRepository repository;
 
@@ -25,7 +26,7 @@ public class ProductListViewModel extends ViewModel {
     }
 
 
-    public MutableLiveData<List<Product>> getDryGoods(String type, int pageSize, int pageNo) {
+    public LiveData<List<Product>> getDryGoods(String type, int pageSize, int pageNo) {
         if (this.mObasevableProducts == null) {
             mObasevableProducts = new MutableLiveData<>();
             loadData(type, pageSize, pageNo);

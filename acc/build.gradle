@@ -29,6 +29,11 @@ android {
         enabled = true
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
 }
 
 dependencies {
@@ -41,12 +46,17 @@ dependencies {
 
     implementation dependencieslib.retrofit
     implementation dependencieslib.retrofitGson
+    implementation dependencieslib.retrofitRxjava
 
     implementation dependencieslib.dagger
-    implementation 'com.android.support:support-v4:26.0.0-beta1'
     annotationProcessor dependencieslib.daggerCompiler
+
+    implementation dependencieslib.rxandroid
+    implementation dependencieslib.rxjava
 
     implementation "android.arch.lifecycle:extensions:1.0.0"
     implementation "android.arch.persistence.room:runtime:1.0.0"
+    annotationProcessor "android.arch.persistence.room:compiler:1.0.0"
+
 
 }

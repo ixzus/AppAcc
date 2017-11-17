@@ -14,6 +14,7 @@ import dagger.Module;
 import dagger.Provides;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
@@ -34,6 +35,7 @@ public class ApiModule {
                 .baseUrl("http://gank.io/api/")
                 .client(okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
     }
 
@@ -49,13 +51,13 @@ public class ApiModule {
 
 //    @Provides
 //    @Singleton
-//    ProductRepository provideProductRepository(WebService webService) {
-//        return new ProductRepository(webService);
+//    RoomRepository provideProductRepository(WebService webService) {
+//        return new RoomRepository(webService);
 //    }
 //
 //    @Provides
 //    @Singleton
-//    ProductListViewModel privideProductListViewModel(ProductRepository repository) {
+//    ProductListViewModel privideProductListViewModel(RoomRepository repository) {
 //        return new ProductListViewModel(repository);
 //    }
 

@@ -16,8 +16,6 @@
 
 package com.example.ixzus.acc.data.db;
 
-import android.arch.lifecycle.MutableLiveData;
-
 import com.example.ixzus.acc.data.db.entity.Product;
 
 import java.util.List;
@@ -28,7 +26,7 @@ import java.util.List;
 class DatabaseInitUtil {
 
 
-    private static void insertData(AppDatabase db, MutableLiveData<List<Product>> products) {
+    private static void insertData(AppDatabase db, List<Product> products) {
         db.beginTransaction();
         try {
             db.productDao().insertAll(products);

@@ -11,11 +11,12 @@ import com.example.ixzus.acc.data.db.entity.Product;
 /**
  * Created by huan on 2017/11/13.
  */
-@Database(entities = {Product.class}, version = 1)
+@Database(entities = {Product.class}, version = 1, exportSchema = false)
 @TypeConverters({Converters.class})
 public abstract class AppDatabase extends RoomDatabase {
 
     static final String DATABASE_NAME = "app-acc-db";
 
-    public abstract ProductDao productDao();
+    abstract public ProductDao productDao();
+
 }

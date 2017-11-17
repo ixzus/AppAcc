@@ -15,13 +15,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.ixzus.acc.data.db.RoomModule;
 import com.example.ixzus.acc.data.db.entity.Product;
+import com.example.ixzus.acc.data.webservice.ApiModule;
 import com.example.ixzus.acc.data.webservice.DaggerApiComponent;
 import com.example.ixzus.acc.databinding.ListFragmentBinding;
 import com.example.ixzus.acc.ui.ProductAdapter;
 import com.example.ixzus.acc.ui.ProductClickCallback;
 import com.example.ixzus.acc.viewmodel.ProductListViewModel;
-import com.example.ixzus.acc.viewmodel.ViewModelFactory;
 
 import java.util.List;
 
@@ -83,8 +84,12 @@ public class ProductListFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         //ui
-        DaggerApiComponent.create().inject(this);
-        ProductListViewModel viewModel = ViewModelProviders.of(this,viewModelFactory).get(ProductListViewModel.class);
+//        DaggerApiComponent.create().inject(this);
+        DaggerApiComponent.builder()
+                .roomModule(new RoomModule(getActivity().getApplication()))
+                .apiModule(new ApiModule())
+                .build().inject(this);
+        ProductListViewModel viewModel = ViewModelProviders.of(this, viewModelFactory).get(ProductListViewModel.class);
         subscribeUi(viewModel);
     }
 
@@ -93,7 +98,8 @@ public class ProductListFragment extends Fragment {
             @Override
             public void onChanged(@Nullable List<Product> products) {
                 Log.e(TAG, "onChanged: " + products.size());
-                if (products != null) {
+//                if (products != null ) {
+                if (products.size()!=0) {
                     mBinding.setIsLoading(false);
                     mAdapter.setmListData(products);
                 } else {

@@ -1,7 +1,9 @@
 package com.example.ixzus.acc.data.db.entity;
 
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
 import java.util.List;
 
@@ -11,6 +13,7 @@ import java.util.List;
 @Entity
 public class Product {
     @PrimaryKey
+    @NonNull
     private String _id;
     private String createdAt;
     private String desc;
@@ -20,6 +23,7 @@ public class Product {
     private String url;
     private boolean used;
     private String who;
+    @Ignore
     private List<String> images;
 
     public String get_id() {

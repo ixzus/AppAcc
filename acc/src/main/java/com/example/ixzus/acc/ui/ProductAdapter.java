@@ -64,8 +64,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                             && Objects.equals(oldProduct.getUrl(), newProduct.getUrl())
                             && oldProduct.isUsed() == newProduct.isUsed()
                             && Objects.equals(oldProduct.getWho(), newProduct.getWho())
-                            && (oldProduct.getImages().size() == newProduct.getImages().size()
-                            && oldProduct.getImages().containsAll(newProduct.getImages()))
+//                            && (oldProduct.getImages().size() == newProduct.getImages().size()
+//                            && oldProduct.getImages().containsAll(newProduct.getImages()))
                             ;
                 }
             });

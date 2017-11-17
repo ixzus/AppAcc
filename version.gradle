@@ -15,8 +15,8 @@ ext {
     archVersion = "1.0.0"
     pagingVersion = "1.0.0"
 
-    rxjavaVersion = "2.1.3"
     rxandroidVersion = "2.0.1"
+    rxjavaVersion = "2.1.6"
 
 
     android = [
@@ -41,5 +41,9 @@ ext {
 
             retrofit      : "com.squareup.retrofit2:retrofit:$retrofitVersion",
             retrofitGson  : "com.squareup.retrofit2:converter-gson:$retrofitVersion",
+            retrofitRxjava: "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion",
+
+            rxandroid     : "io.reactivex.rxjava2:rxandroid:$rxandroidVersion",
+            rxjava        : "io.reactivex.rxjava2:rxjava:$rxjavaVersion",
     ]
 }
