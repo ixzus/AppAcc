@@ -23,6 +23,7 @@ import com.example.ixzus.acc.databinding.ListFragmentBinding;
 import com.example.ixzus.acc.ui.ProductAdapter;
 import com.example.ixzus.acc.ui.ProductClickCallback;
 import com.example.ixzus.acc.viewmodel.ProductListViewModel;
+import com.example.ixzus.acc.widget.ItemDecoration.HorizontalDividerItemDecoration;
 
 import java.util.List;
 
@@ -71,6 +72,7 @@ public class ProductListFragment extends Fragment {
                              Bundle savedInstanceState) {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.list_fragment, container, false);
         mAdapter = new ProductAdapter(mClaaBack);
+        mBinding.productsList.addItemDecoration(new HorizontalDividerItemDecoration.Builder(getActivity()).build());
         mBinding.productsList.setAdapter(mAdapter);
         return mBinding.getRoot();
     }

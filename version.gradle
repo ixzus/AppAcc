@@ -1,11 +1,11 @@
 ext {
     gladleVersion = "3.0.0"
 
-    supportVersion = "26.+"
+    supportVersion = "27.0.1"
     constraintVersion = "1.0.2"
     kotlinVerion = "1.1.51"
 
-    archVersion = '1.0.0-alpha5'
+    archVersion = "1.0.0"
 
     daggerVersion = "2.12"
 
@@ -18,32 +18,40 @@ ext {
     rxandroidVersion = "2.0.1"
     rxjavaVersion = "2.1.6"
 
+    BaseRecyclerViewAdapterHelperVersion = "2.9.34"
+
 
     android = [
-            compileSdkVersion: 26,
-            buildToolsVersion: "26.1.0",
+            compileSdkVersion: 27,
+            buildToolsVersion: "27.0.1",
             minSdkVersion    : 19,
-            targetSdkVersion : 26,
+            targetSdkVersion : 27,
             versionCode      : 1,
             versionName      : "1.0"
     ]
 
     dependencies = [
-            supportV4     : "com.android.support:support-v4:$supportVersion",
-            appcompatV7   : "com.android.support:appcompat-v7:$supportVersion",
-            recyclerview  : "com.android.support:recyclerview-v7:$supportVersion",
-            design        : "com.android.support:design:$supportVersion",
-            constraint    : "com.android.support.constraint:constraint-layout:$constraintVersion",
-            kotlin        : "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlinVerion",
+            supportV4                    : "com.android.support:support-v4:$supportVersion",
+            appcompatV7                  : "com.android.support:appcompat-v7:$supportVersion",
+            recyclerview                 : "com.android.support:recyclerview-v7:$supportVersion",
+            design                       : "com.android.support:design:$supportVersion",
+            constraint                   : "com.android.support.constraint:constraint-layout:$constraintVersion",
+            kotlin                       : "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlinVerion",
 
-            dagger        : "com.google.dagger:dagger:$daggerVersion",
-            daggerCompiler: "com.google.dagger:dagger-compiler:$daggerVersion",
+            lifecycleExtensions          : "android.arch.lifecycle:extensions:$archVersion",
+            roomRuntime                  : "android.arch.persistence.room:runtime:$archVersion",
+            roomCompiler                 : "android.arch.persistence.room:compiler:$archVersion",
 
-            retrofit      : "com.squareup.retrofit2:retrofit:$retrofitVersion",
-            retrofitGson  : "com.squareup.retrofit2:converter-gson:$retrofitVersion",
-            retrofitRxjava: "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion",
+            dagger                       : "com.google.dagger:dagger:$daggerVersion",
+            daggerCompiler               : "com.google.dagger:dagger-compiler:$daggerVersion",
 
-            rxandroid     : "io.reactivex.rxjava2:rxandroid:$rxandroidVersion",
-            rxjava        : "io.reactivex.rxjava2:rxjava:$rxjavaVersion",
+            retrofit                     : "com.squareup.retrofit2:retrofit:$retrofitVersion",
+            retrofitGson                 : "com.squareup.retrofit2:converter-gson:$retrofitVersion",
+            retrofitRxjava               : "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion",
+
+            rxandroid                    : "io.reactivex.rxjava2:rxandroid:$rxandroidVersion",
+            rxjava                       : "io.reactivex.rxjava2:rxjava:$rxjavaVersion",
+
+            BaseRecyclerViewAdapterHelper: "com.github.CymChad:BaseRecyclerViewAdapterHelper:$BaseRecyclerViewAdapterHelperVersion",
     ]
 }

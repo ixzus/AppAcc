@@ -44,6 +44,10 @@ dependencies {
     implementation dependencieslib.recyclerview
     implementation dependencieslib.constraint
 
+    implementation dependencieslib.lifecycleExtensions
+    implementation dependencieslib.roomRuntime
+    annotationProcessor dependencieslib.roomCompiler
+
     implementation dependencieslib.retrofit
     implementation dependencieslib.retrofitGson
     implementation dependencieslib.retrofitRxjava
@@ -54,9 +58,7 @@ dependencies {
     implementation dependencieslib.rxandroid
     implementation dependencieslib.rxjava
 
-    implementation "android.arch.lifecycle:extensions:1.0.0"
-    implementation "android.arch.persistence.room:runtime:1.0.0"
-    annotationProcessor "android.arch.persistence.room:compiler:1.0.0"
 
+    implementation dependencieslib.BaseRecyclerViewAdapterHelper
 
 }
