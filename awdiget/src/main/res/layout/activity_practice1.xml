@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#506E7A"
+    tools:context="com.eeepay.awdiget.hencoder.Practice1Activity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.eeepay.awdiget.hencoder.practice1.Sample06KeyframeView
+            android:id="@+id/aaview"
+            android:layout_width="200dp"
+            android:layout_height="200dp" />
+
+        <com.eeepay.awdiget.hencoder.practice1.Practice11PieChartView
+            android:id="@+id/bing"
+            android:layout_width="wrap_content"
+            android:layout_height="300dp" />
+
+        <com.eeepay.awdiget.hencoder.practice1.Practice10HistogramView
+            android:id="@+id/zhu"
+            android:layout_width="wrap_content"
+            android:layout_height="300dp" />
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>
