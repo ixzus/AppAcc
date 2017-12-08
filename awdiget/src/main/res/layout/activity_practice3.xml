@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.eeepay.awdiget.hencoder.Practice3Activity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.eeepay.awdiget.hencoder.practice3.Sample01DrawTextView
+            android:layout_width="wrap_content"
+            android:layout_height="300dp" />
+
+        <com.eeepay.awdiget.hencoder.practice3.Sample02StaticLayoutView
+            android:layout_width="wrap_content"
+            android:layout_height="300dp" />
+
+        <com.eeepay.awdiget.hencoder.practice3.Sample03SetTextSizeView
+            android:layout_width="wrap_content"
+            android:layout_height="300dp" />
+
+        <com.eeepay.awdiget.hencoder.practice3.Sample04SetTypefaceView
+            android:layout_width="wrap_content"
+            android:layout_height="300dp" />
+
+        <com.eeepay.awdiget.hencoder.practice3.Sample05SetFakeBoldTextView
+            android:layout_width="wrap_content"
+            android:layout_height="300dp" />
+
+        <com.eeepay.awdiget.hencoder.practice3.Sample06SetStrikeThruTextView
+            android:layout_width="wrap_content"
+            android:layout_height="300dp" />
+
+        <com.eeepay.awdiget.hencoder.practice3.Sample07SetUnderlineTextView
+            android:layout_width="wrap_content"
+            android:layout_height="300dp" />
+
+        <com.eeepay.awdiget.hencoder.practice3.Sample08setTextSkewXView
+            android:layout_width="wrap_content"
+            android:layout_height="300dp" />
+
+        <com.eeepay.awdiget.hencoder.practice3.Sample09SetTextScaleXView
+            android:layout_width="wrap_content"
+            android:layout_height="300dp" />
+
+        <com.eeepay.awdiget.hencoder.practice3.Sample10SetTextAlignView
+            android:layout_width="wrap_content"
+            android:layout_height="300dp" />
+
+        <com.eeepay.awdiget.hencoder.practice3.Sample11GetFontSpacingView
+            android:layout_width="wrap_content"
+            android:layout_height="300dp" />
+
+        <com.eeepay.awdiget.hencoder.practice3.Sample12MeasureTextView
+            android:layout_width="wrap_content"
+            android:layout_height="300dp" />
+
+        <com.eeepay.awdiget.hencoder.practice3.Sample13GetTextBoundsView
+            android:layout_width="wrap_content"
+            android:layout_height="300dp" />
+
+        <com.eeepay.awdiget.hencoder.practice3.Sample14GetFontMetricsView
+            android:layout_width="wrap_content"
+            android:layout_height="300dp" />
+
+    </LinearLayout>
+
+</ScrollView>
