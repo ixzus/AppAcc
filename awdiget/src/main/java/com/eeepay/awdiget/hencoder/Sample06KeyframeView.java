@@ -9,11 +9,13 @@ import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 import static com.eeepay.awdiget.hencoder.Utils.dpToPixel;
 
 public class Sample06KeyframeView extends View {
+    private static final String TAG = "Sample06KeyframeView";
     final float radius = dpToPixel(80);
 
     float progress = 0;
@@ -54,7 +56,7 @@ public class Sample06KeyframeView extends View {
     @Override
     public void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
+        Log.e(TAG, "onDraw: " );
         float centerX = getWidth() / 2;
         float centerY = getHeight() / 2;
 
