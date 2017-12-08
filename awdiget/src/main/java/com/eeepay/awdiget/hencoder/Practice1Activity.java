@@ -8,7 +8,6 @@ import com.eeepay.awdiget.R;
 import com.eeepay.awdiget.hencoder.practice1.OSVersion;
 import com.eeepay.awdiget.hencoder.practice1.Practice10HistogramView;
 import com.eeepay.awdiget.hencoder.practice1.Practice11PieChartView;
-import com.eeepay.awdiget.hencoder.practice1.Sample06KeyframeView;
 
 import java.util.ArrayList;
 import java.util.List;

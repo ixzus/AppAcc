@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <com.eeepay.awdiget.hencoder.practice1.Sample06KeyframeView
+        <com.eeepay.awdiget.hencoder.Sample06KeyframeView
             android:id="@+id/aaview"
             android:layout_width="200dp"
             android:layout_height="200dp" />

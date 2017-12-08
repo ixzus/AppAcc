@@ -1,4 +1,4 @@
-package com.eeepay.awdiget.hencoder.practice1;
+package com.eeepay.awdiget.hencoder;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;
