@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/wd_dialog_white_round_corner_bg"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/title"
+        style="@style/DialogTitleStyle"
+        android:text="温馨提示" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/colorBg">
+
+    </View>
+
+
+    <TextView
+        android:id="@+id/message"
+        style="@style/DialogContentStyle"
+        android:text="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginBottom="14dp">
+
+        <com.allen.library.SuperButton
+            android:id="@+id/cancel"
+            style="@style/DialogButtonStyle"
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="6dp"
+            android:text="取消"
+            app:sCornersRadius="1dp"
+            app:sSelectorDisableColor="#C9C9C9"
+            app:sSelectorNormalColor="#C9C9C9"
+            app:sSelectorPressedColor="#ACACAC"
+            app:sUseSelector="true" />
+
+
+        <com.allen.library.SuperButton
+            android:id="@+id/ok"
+            style="@style/DialogButtonStyle"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="14dp"
+            android:text="登录"
+            app:sCornersRadius="1dp"
+            app:sSelectorDisableColor="#C9C9C9"
+            app:sSelectorNormalColor="#108EE9"
+            app:sSelectorPressedColor="#ACACAC"
+            app:sUseSelector="true" />
+
+    </LinearLayout>
+
+</LinearLayout>

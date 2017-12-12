@@ -7,9 +7,11 @@ ext {
 
     archVersion = "1.0.0"
 
+
     daggerVersion = "2.12"
 
     retrofitVersion = "2.3.0"
+    logginginterceptorVersion = "3.8.1"
     glideVersion = "3.8.0"
 
     archVersion = "1.0.0"
@@ -17,9 +19,21 @@ ext {
 
     rxandroidVersion = "2.0.1"
     rxjavaVersion = "2.1.6"
+    rxlifecycleVersion = "2.2.1"
 
     BaseRecyclerViewAdapterHelperVersion = "2.9.34"
 
+    permissionsdispatcherVersion = "3.0.1"
+    eventbusVersion = "3.1.1"
+
+    gsonVersion = "2.8.1"
+    SmartRefreshLayoutVersion = "1.0.3"
+    SuperTextViewVersion = "2.1.5"
+    gifVersion = "1.2.8"
+    barlibraryVersion = "2.3.0"
+
+    arouterVersion = "1.2.4"
+    arouterVersionCompiler = "1.1.4"
 
     android = [
             compileSdkVersion: 27,
@@ -31,27 +45,46 @@ ext {
     ]
 
     dependencies = [
-            supportV4                    : "com.android.support:support-v4:$supportVersion",
-            appcompatV7                  : "com.android.support:appcompat-v7:$supportVersion",
-            recyclerview                 : "com.android.support:recyclerview-v7:$supportVersion",
-            design                       : "com.android.support:design:$supportVersion",
-            constraint                   : "com.android.support.constraint:constraint-layout:$constraintVersion",
-            kotlin                       : "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlinVerion",
+            //android
+            supportV4                     : "com.android.support:support-v4:$supportVersion",
+            appcompatV7                   : "com.android.support:appcompat-v7:$supportVersion",
+            recyclerview                  : "com.android.support:recyclerview-v7:$supportVersion",
+            design                        : "com.android.support:design:$supportVersion",
+            constraint                    : "com.android.support.constraint:constraint-layout:$constraintVersion",
+            kotlin                        : "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlinVerion",
+            //arch
+            lifecycleExtensions           : "android.arch.lifecycle:extensions:$archVersion",
+            roomRuntime                   : "android.arch.persistence.room:runtime:$archVersion",
+            roomCompiler                  : "android.arch.persistence.room:compiler:$archVersion",
+            //dagger
+            dagger                        : "com.google.dagger:dagger:$daggerVersion",
+            daggerCompiler                : "com.google.dagger:dagger-compiler:$daggerVersion",
+            //eventbus
+            eventbus                      : "org.greenrobot:eventbus:$eventbusVersion",
+            //arouter
+            arouter                       : "com.alibaba:arouter-api:$arouterVersion",
+            arouterCompiler               : "com.alibaba:arouter-compiler:$arouterVersionCompiler",
+            //permission
+            permissionsdispatcher         : "com.github.hotchemi:permissionsdispatcher:$permissionsdispatcherVersion",
+            permissionsdispatcherProcessor: "com.github.hotchemi:permissionsdispatcher-processor:$permissionsdispatcherVersion",
+            //retrofit
+            retrofit                      : "com.squareup.retrofit2:retrofit:$retrofitVersion",
+            retrofitGson                  : "com.squareup.retrofit2:converter-gson:$retrofitVersion",
+            retrofitRxjava                : "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion",
+            logginginterceptor            : "com.squareup.okhttp3:logging-interceptor:$logginginterceptorVersion",
+            //rx
+            rxandroid                     : "io.reactivex.rxjava2:rxandroid:$rxandroidVersion",
+            rxjava                        : "io.reactivex.rxjava2:rxjava:$rxjavaVersion",
+            rxlifecycle                   : "com.trello.rxlifecycle2:rxlifecycle:$rxlifecycleVersion",
+            rxlifecyclecomponents         : "com.trello.rxlifecycle2:rxlifecycle-components:$rxlifecycleVersion",
+            //other
+            BaseRecyclerViewAdapterHelper : "com.github.CymChad:BaseRecyclerViewAdapterHelper:$BaseRecyclerViewAdapterHelperVersion",
+            gif                           : "pl.droidsonroids.gif:android-gif-drawable:$gifVersion",
+            barlibrary                    : "com.gyf.barlibrary:barlibrary:$barlibraryVersion",
+            gson                          : "com.google.code.gson:gson:$gsonVersion",
+            SmartRefreshLayout            : "com.scwang.smartrefresh:SmartRefreshLayout:$SmartRefreshLayoutVersion",
+            SuperTextView                 : "com.github.lygttpod:SuperTextView:$SuperTextViewVersion",
 
-            lifecycleExtensions          : "android.arch.lifecycle:extensions:$archVersion",
-            roomRuntime                  : "android.arch.persistence.room:runtime:$archVersion",
-            roomCompiler                 : "android.arch.persistence.room:compiler:$archVersion",
 
-            dagger                       : "com.google.dagger:dagger:$daggerVersion",
-            daggerCompiler               : "com.google.dagger:dagger-compiler:$daggerVersion",
-
-            retrofit                     : "com.squareup.retrofit2:retrofit:$retrofitVersion",
-            retrofitGson                 : "com.squareup.retrofit2:converter-gson:$retrofitVersion",
-            retrofitRxjava               : "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion",
-
-            rxandroid                    : "io.reactivex.rxjava2:rxandroid:$rxandroidVersion",
-            rxjava                       : "io.reactivex.rxjava2:rxjava:$rxjavaVersion",
-
-            BaseRecyclerViewAdapterHelper: "com.github.CymChad:BaseRecyclerViewAdapterHelper:$BaseRecyclerViewAdapterHelperVersion",
     ]
 }

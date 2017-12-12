@@ -1,0 +1,54 @@
+apply plugin: 'com.android.library'
+
+def androidlib = rootProject.ext.android
+def dependencieslib = rootProject.ext.dependencies
+
+android {
+    compileSdkVersion androidlib.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion androidlib.minSdkVersion
+        targetSdkVersion androidlib.targetSdkVersion
+        versionCode androidlib.versionCode
+        versionName androidlib.versionName
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [ moduleName : project.getName() ]
+            }
+        }
+    }
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    api dependencieslib.appcompatV7
+    api dependencieslib.constraint
+
+    api dependencieslib.rxjava
+    api dependencieslib.rxandroid
+    api dependencieslib.rxlifecycle
+    api dependencieslib.rxlifecyclecomponents
+
+    api dependencieslib.eventbus
+
+    api dependencieslib.retrofit
+    api dependencieslib.retrofitGson
+    api dependencieslib.retrofitRxjava
+    api dependencieslib.logginginterceptor
+
+    api dependencieslib.gif
+    api dependencieslib.barlibrary
+    api dependencieslib.SuperTextView
+    api dependencieslib.SmartRefreshLayout
+    api dependencieslib.BaseRecyclerViewAdapterHelper
+
+//    api dependencieslib.arouter
+//    annotationProcessor dependencieslib.arouterCompiler
+    compile 'com.alibaba:arouter-api:1.2.4'
+    annotationProcessor 'com.alibaba:arouter-compiler:1.1.4'
+}

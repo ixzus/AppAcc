@@ -37,28 +37,22 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation dependencieslib.kotlin
     implementation dependencieslib.supportV4
     implementation dependencieslib.appcompatV7
     implementation dependencieslib.recyclerview
     implementation dependencieslib.constraint
-
     implementation dependencieslib.lifecycleExtensions
     implementation dependencieslib.roomRuntime
     annotationProcessor dependencieslib.roomCompiler
-
     implementation dependencieslib.retrofit
     implementation dependencieslib.retrofitGson
     implementation dependencieslib.retrofitRxjava
-
     implementation dependencieslib.dagger
     annotationProcessor dependencieslib.daggerCompiler
-
     implementation dependencieslib.rxandroid
     implementation dependencieslib.rxjava
-
-
     implementation dependencieslib.BaseRecyclerViewAdapterHelper
-
+    implementation project(':lib_base')
 }

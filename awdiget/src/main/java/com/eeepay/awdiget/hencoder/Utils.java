@@ -8,4 +8,10 @@ public class Utils {
         DisplayMetrics metrics = Resources.getSystem().getDisplayMetrics();
         return dp * metrics.density;
     }
+
+    public static int dp2px(float dipValue) {
+        final float scale = Resources.getSystem().getDisplayMetrics().density;
+        return (int) (dipValue * scale + 0.5f);
+    }
+
 }
