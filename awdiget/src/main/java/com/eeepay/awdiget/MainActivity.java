@@ -9,6 +9,7 @@ import com.eeepay.awdiget.hencoder.Practice1Activity;
 import com.eeepay.awdiget.hencoder.Practice2Activity;
 import com.eeepay.awdiget.hencoder.Practice3Activity;
 import com.eeepay.awdiget.hencoder.Practice6Activity;
+import com.eeepay.awdiget.hencoder.Practice7Activity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.pratice2).setOnClickListener(this);
         findViewById(R.id.pratice3).setOnClickListener(this);
         findViewById(R.id.pratice6).setOnClickListener(this);
+        findViewById(R.id.pratice7).setOnClickListener(this);
 
     }
 
@@ -37,6 +39,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.pratice6:
                 startActivity(new Intent(this, Practice6Activity.class));
+                break;
+            case R.id.pratice7:
+                startActivity(new Intent(this, Practice7Activity.class));
                 break;
         }
     }
