@@ -1,4 +1,4 @@
-package com.eeepay.awdiget.hencoder;
+package com.eeepay.awdiget.hencoder.practice6;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;
@@ -12,7 +12,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 
-import static com.eeepay.awdiget.hencoder.Utils.dpToPixel;
+import static com.eeepay.awdiget.hencoder.UIUtils.dpToPixel;
 
 public class Sample06KeyframeView extends View {
     private static final String TAG = "Sample06KeyframeView";
@@ -46,7 +46,7 @@ public class Sample06KeyframeView extends View {
         invalidate();
     }
 
-    public void setData(int start, int end){
+    public void setData(int start, int end) {
         ObjectAnimator animator = ObjectAnimator.ofFloat(this, "progress", start, end);
         animator.setDuration(1000);
         animator.setInterpolator(new FastOutSlowInInterpolator());
@@ -54,9 +54,20 @@ public class Sample06KeyframeView extends View {
     }
 
     @Override
+    protected void onFinishInflate() {
+        super.onFinishInflate();
+        postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                setData(0, 85);
+            }
+        }, 300);
+    }
+
+    @Override
     public void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        Log.e(TAG, "onDraw: " );
+        Log.e(TAG, "onDraw: ");
         float centerX = getWidth() / 2;
         float centerY = getHeight() / 2;
 

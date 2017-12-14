@@ -11,7 +11,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.yltx.modulewd.R;
+
+import com.eeepay.modulebase.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;
