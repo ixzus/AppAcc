@@ -30,17 +30,26 @@
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
             android:text="pratice3" />
+
         <Button
             android:id="@+id/pratice6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
             android:text="pratice6" />
+
         <Button
             android:id="@+id/pratice7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
             android:text="pratice7" />
+
+        <Button
+            android:id="@+id/customview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:text="customview" />
     </LinearLayout>
 </ScrollView>

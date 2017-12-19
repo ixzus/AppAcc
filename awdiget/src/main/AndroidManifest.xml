@@ -21,7 +21,8 @@
         <activity android:name=".hencoder.Practice2Activity" />
         <activity android:name=".hencoder.Practice3Activity" />
         <activity android:name=".hencoder.Practice6Activity" />
-        <activity android:name=".hencoder.Practice7Activity"></activity>
+        <activity android:name=".hencoder.Practice7Activity" />
+        <activity android:name=".demo.XYZActivity"></activity>
     </application>
 
 </manifest>

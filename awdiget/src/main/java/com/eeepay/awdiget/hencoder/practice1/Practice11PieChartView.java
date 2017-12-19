@@ -8,7 +8,6 @@ import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 
 import java.util.List;
@@ -16,11 +15,20 @@ import java.util.List;
 public class Practice11PieChartView extends View {
     private static final String TAG = "Practice11PieChartView";
     private List<OSVersion> listData;
+    Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private float maxVersion;
     private float totalVersion;
-
-    private float startRawX;
-    private float startRawY;
+    private float initAngle = 0f;
+    private int mWidth;
+    private int mHeight;
+    float startAngle;
+    float sweptAngle;
+    float halfAngle;
+    float lineStartX;
+    float lineStartY;
+    float lineEndX;
+    float lineEndY;
+    float radius;
 
     public Practice11PieChartView(Context context) {
         super(context);
@@ -43,6 +51,17 @@ public class Practice11PieChartView extends View {
         invalidate();
 
     }
+    public void setInitAngle(float initAngle) {
+        this.initAngle = initAngle;
+        invalidate();
+    }
+
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        super.onSizeChanged(w, h, oldw, oldh);
+        mWidth = w;
+        mHeight = h;
+    }
 
 
     @Override
@@ -51,16 +70,10 @@ public class Practice11PieChartView extends View {
 //        综合练习
 //        练习内容：使用各种 Canvas.drawXXX() 方法画饼图
         Log.e("TAG", "onDraw: ");
-        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        float startAngle = 0f;
-        float sweptAngle;
-        float halfAngle;
-        float lineStartX;
-        float lineStartY;
-        float lineEndX;
-        float lineEndY;
-        float radius;
-
+        if (null == listData) {
+            return;
+        }
+        startAngle = initAngle;
         String name = "饼图";
         paint.setColor(Color.WHITE);
         paint.setTextSize(28);
@@ -110,34 +123,4 @@ public class Practice11PieChartView extends View {
 
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        float x = event.getX();
-        float y = event.getY();
-        float rawX = event.getRawX();
-        float rawY = event.getRawY();
-        switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                startRawX = rawX;
-                startRawY = rawY;
-                Log.e("TAG", "onTouchEvent rawX: " + rawX);
-                Log.e("TAG", "onTouchEvent rawY: " + rawY);
-            case MotionEvent.ACTION_UP:
-//                    listener.onItemClick(listData.get());
-                Log.e("TAG", "onTouchEvent Up rawX: " + rawX);
-                Log.e("TAG", "onTouchEvent Up rawY: " + rawY);
-                return true;
-        }
-        return super.onTouchEvent(event);
-    }
-
-    public interface OnItemClickListener {
-        void onItemClick(OSVersion version);
-    }
-
-    private OnItemClickListener listener;
-
-    public void setListener(OnItemClickListener listener) {
-        this.listener = listener;
-    }
 }

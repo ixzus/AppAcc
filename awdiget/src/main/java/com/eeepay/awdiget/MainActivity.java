@@ -3,8 +3,10 @@ package com.eeepay.awdiget;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MotionEvent;
 import android.view.View;
 
+import com.eeepay.awdiget.demo.XYZActivity;
 import com.eeepay.awdiget.hencoder.Practice1Activity;
 import com.eeepay.awdiget.hencoder.Practice2Activity;
 import com.eeepay.awdiget.hencoder.Practice3Activity;
@@ -17,11 +19,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //hencoder
         findViewById(R.id.pratice1).setOnClickListener(this);
         findViewById(R.id.pratice2).setOnClickListener(this);
         findViewById(R.id.pratice3).setOnClickListener(this);
         findViewById(R.id.pratice6).setOnClickListener(this);
         findViewById(R.id.pratice7).setOnClickListener(this);
+        findViewById(R.id.customview).setOnClickListener(this);
 
     }
 
@@ -43,6 +47,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.pratice7:
                 startActivity(new Intent(this, Practice7Activity.class));
                 break;
+            case R.id.customview:
+                startActivity(new Intent(this, XYZActivity.class));
+                break;
         }
     }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+
+        return super.dispatchTouchEvent(ev);
+    }
+
+
 }
