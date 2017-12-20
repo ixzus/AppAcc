@@ -2,7 +2,9 @@ package com.eeepay.awdiget.demo;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Matrix;
+import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
 import android.graphics.Region;
@@ -18,7 +20,7 @@ import android.view.View;
 
 public class RemoteControlView extends CustomView {
     private static final String TAG = "RemoteControlView";
-    private Path upPath, rightPaht, downPath, leftPaht, centerPath;
+    private Path upPath, rightPaht, downPath, leftPaht, centerPath,trianglePath;
     private Region upRegion, rightRegion, downRegion, leftRegion, centerRegion;
 
     private Matrix mMapMatrix = null;
@@ -63,6 +65,8 @@ public class RemoteControlView extends CustomView {
         mPaint.setColor(mDefauColor);
 
         mMapMatrix = new Matrix();
+
+        trianglePath = new Path();
     }
 
     @Override
@@ -111,6 +115,15 @@ public class RemoteControlView extends CustomView {
         upPath.arcTo(inCircleRectF, startSamllSweepAngle + 270, smallSweepAngle);
         upPath.close();
         upRegion.setPath(upPath, globalRegion);
+
+        int b = bigR -smallR;
+        int c = (int) (b*0.25f);
+        int a = (bigR+smallR)/2+c/2;
+        trianglePath.moveTo(a, 0);
+        trianglePath.lineTo(a-c,-c);
+        trianglePath.lineTo(a-c,c);
+        trianglePath.close();
+
     }
 
     @Override
@@ -140,6 +153,17 @@ public class RemoteControlView extends CustomView {
         } else if (currentFalg == mLeft) {
             canvas.drawPath(leftPaht, mPaint);
         }
+
+        //
+        for(int i=0;i<4;++i){
+            mPaint.setColor(Color.WHITE);
+            canvas.drawPath(trianglePath,mPaint);
+            canvas.rotate(90);
+        }
+
+        mPaint.setTextSize(36);
+        mPaint.setTextAlign(Paint.Align.CENTER);
+        canvas.drawText("暂停",0,36/3,mPaint);
 
         mPaint.setColor(mDefauColor);
     }
