@@ -20,8 +20,10 @@ import android.view.View;
 
 public class RemoteControlView extends CustomView {
     private static final String TAG = "RemoteControlView";
-    private Path upPath, rightPaht, downPath, leftPaht, centerPath,trianglePath;
+    private Path upPath, rightPaht, downPath, leftPaht, centerPath, trianglePath;
+    private Path leftupPath, rightupPath, leftdownPath, rightdownPath;
     private Region upRegion, rightRegion, downRegion, leftRegion, centerRegion;
+    private Region reRU, reRD, reLD, reLU;
 
     private Matrix mMapMatrix = null;
 
@@ -30,9 +32,15 @@ public class RemoteControlView extends CustomView {
     private int mRight = 2;
     private int mDown = 3;
     private int mLeft = 4;
+    private int mBtnRU = 5;
+    private int mbtnRD = 6;
+    private int mbtnLD = 7;
+    private int mbtnLU = 8;
 
     private int touchFlag = -1;
     private int currentFalg = -1;
+
+    int x1, y1, w1, h1;
 
     private OnItemClickListener onItemClickListener = null;
 
@@ -56,11 +64,20 @@ public class RemoteControlView extends CustomView {
         downPath = new Path();
         leftPaht = new Path();
 
+        leftupPath = new Path();
+        leftdownPath = new Path();
+        rightupPath = new Path();
+        rightdownPath = new Path();
+
         centerRegion = new Region();
         upRegion = new Region();
         rightRegion = new Region();
         downRegion = new Region();
         leftRegion = new Region();
+        reLU = new Region();
+        reLD = new Region();
+        reRD = new Region();
+        reRU = new Region();
 
         mPaint.setColor(mDefauColor);
 
@@ -116,13 +133,47 @@ public class RemoteControlView extends CustomView {
         upPath.close();
         upRegion.setPath(upPath, globalRegion);
 
-        int b = bigR -smallR;
-        int c = (int) (b*0.25f);
-        int a = (bigR+smallR)/2+c/2;
+        int b = bigR - smallR;
+        int c = (int) (b * 0.25f);
+        int a = (bigR + smallR) / 2 + c / 2;
         trianglePath.moveTo(a, 0);
-        trianglePath.lineTo(a-c,-c);
-        trianglePath.lineTo(a-c,c);
+        trianglePath.lineTo(a - c, -c);
+        trianglePath.lineTo(a - c, c);
         trianglePath.close();
+
+//        圆点坐标：(x0,y0)
+//        半径：r
+//        角度：a0
+//
+//        则圆上任一点为：（x1,y1）
+//        x1   =   x0   +   r   *   cos(ao   *   3.14   /180   )
+//        y1   =   y0   +   r   *   sin(ao   *   3.14   /180   )
+        int btnR = bigR;
+        x1 = (int) (btnR * Math.cos(45 * Math.PI / 180));
+        y1 = -(int) (btnR * Math.sin(45 * Math.PI / 180));
+        w1 = 200;
+        h1 = 100;
+        RectF rectF1 = new RectF(x1, y1 - h1, x1 + w1, y1);
+        RectF rectF2 = new RectF(x1, -(y1 - h1), x1 + w1, -y1);
+        RectF rectF3 = new RectF(-x1, -(y1 - h1), -(x1 + w1), -y1);
+        RectF rectF4 = new RectF(-x1, y1 - h1, -(x1 + w1), y1);
+        rightupPath.addRect(rectF1, Path.Direction.CW);
+        Path path1 = new Path();
+        path1.addCircle(0, 0, bigR * 1.15f, Path.Direction.CW);
+        rightupPath.op(path1, Path.Op.DIFFERENCE);
+        reRU.setPath(rightupPath, globalRegion);
+
+        rightdownPath.addRect(rectF2, Path.Direction.CW);
+        rightdownPath.op(path1, Path.Op.DIFFERENCE);
+        reRD.setPath(rightdownPath, globalRegion);
+
+        leftdownPath.addRect(rectF3, Path.Direction.CW);
+        leftdownPath.op(path1, Path.Op.DIFFERENCE);
+        reLD.setPath(leftdownPath, globalRegion);
+
+        leftupPath.addRect(rectF4, Path.Direction.CW);
+        leftupPath.op(path1, Path.Op.DIFFERENCE);
+        reLU.setPath(leftupPath, globalRegion);
 
     }
 
@@ -140,6 +191,10 @@ public class RemoteControlView extends CustomView {
         canvas.drawPath(downPath, mPaint);
         canvas.drawPath(leftPaht, mPaint);
         canvas.drawPath(upPath, mPaint);
+        canvas.drawPath(rightupPath, mPaint);
+        canvas.drawPath(rightdownPath, mPaint);
+        canvas.drawPath(leftupPath, mPaint);
+        canvas.drawPath(leftdownPath, mPaint);
 
         mPaint.setColor(mTouchedColor);
         if (currentFalg == mCenter) {
@@ -152,25 +207,37 @@ public class RemoteControlView extends CustomView {
             canvas.drawPath(downPath, mPaint);
         } else if (currentFalg == mLeft) {
             canvas.drawPath(leftPaht, mPaint);
+        } else if (currentFalg == mBtnRU) {
+            canvas.drawPath(rightupPath, mPaint);
+        } else if (currentFalg == mbtnRD) {
+            canvas.drawPath(rightdownPath, mPaint);
+        } else if (currentFalg == mbtnLD) {
+            canvas.drawPath(leftdownPath, mPaint);
+        } else if (currentFalg == mbtnLU) {
+            canvas.drawPath(leftupPath, mPaint);
         }
 
         //
-        for(int i=0;i<4;++i){
+        for (int i = 0; i < 4; ++i) {
             mPaint.setColor(Color.WHITE);
-            canvas.drawPath(trianglePath,mPaint);
+            canvas.drawPath(trianglePath, mPaint);
             canvas.rotate(90);
         }
 
         mPaint.setTextSize(36);
         mPaint.setTextAlign(Paint.Align.CENTER);
-        canvas.drawText("暂停",0,36/3,mPaint);
+        canvas.drawText("暂停", 0, 36 / 3, mPaint);
+        canvas.drawText("退出", x1 + w1 / 2, y1 -h1/3, mPaint);
+        canvas.drawText("返回", x1 + w1 / 2, -(y1 -h1/2), mPaint);
+        canvas.drawText("频道", -(x1 + w1 / 2), -(y1 -h1/2), mPaint);
+        canvas.drawText("导视", -(x1 + w1 / 2), y1 -h1/3, mPaint);
 
         mPaint.setColor(mDefauColor);
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        Log.e(TAG, "onTouchEvent: " );
+        Log.e(TAG, "onTouchEvent: ");
         float[] pts = new float[2];
         pts[0] = event.getX();
         pts[1] = event.getY();
@@ -181,8 +248,8 @@ public class RemoteControlView extends CustomView {
             case MotionEvent.ACTION_DOWN:
                 touchFlag = getTouchedPaht(x, y);
                 currentFalg = touchFlag;
-                Log.e(TAG, "onTouchEvent: "+x+"*"+y);
-                Log.e(TAG, "onTouchEvent: "+touchFlag);
+                Log.e(TAG, "onTouchEvent: " + x + "*" + y);
+                Log.e(TAG, "onTouchEvent: " + touchFlag);
                 break;
             case MotionEvent.ACTION_MOVE:
                 currentFalg = getTouchedPaht(x, y);
@@ -223,6 +290,14 @@ public class RemoteControlView extends CustomView {
             return 3;
         } else if (leftRegion.contains(x, y)) {
             return 4;
+        } else if (reRU.contains(x, y)) {
+            return 5;
+        } else if (reRD.contains(x, y)) {
+            return 6;
+        } else if (reLD.contains(x, y)) {
+            return 7;
+        } else if (reLU.contains(x, y)) {
+            return 8;
         }
         return -1;
     }

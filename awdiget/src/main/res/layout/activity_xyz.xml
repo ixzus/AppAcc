@@ -18,8 +18,8 @@
             android:layout_height="300dp" />
         
 
-        <!--<com.eeepay.awdiget.demo.RemoteControlMenu-->
-            <!--android:layout_width="match_parent"-->
+        <!--<com.eeepay.awdiget.demo.TimeClock-->
+            <!--android:layout_width="wrap_content"-->
             <!--android:layout_height="300dp" />-->
 
     </LinearLayout>
