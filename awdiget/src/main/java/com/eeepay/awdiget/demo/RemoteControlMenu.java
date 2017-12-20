@@ -7,9 +7,11 @@ import android.graphics.Path;
 import android.graphics.RectF;
 import android.graphics.Region;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 
 public class RemoteControlMenu extends CustomView {
+    private static final String TAG = "RemoteControlMenu";
     Path up_p, down_p, left_p, right_p, center_p;
     Region up, down, left, right, center;
 
@@ -103,10 +105,9 @@ public class RemoteControlMenu extends CustomView {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         float[] pts = new float[2];
-        pts[0] = event.getRawX();
-        pts[1] = event.getRawY();
+        pts[0] = event.getX();
+        pts[1] = event.getY();
         mMapMatrix.mapPoints(pts);
-
         int x = (int) pts[0];
         int y = (int) pts[1];
 
@@ -114,6 +115,8 @@ public class RemoteControlMenu extends CustomView {
             case MotionEvent.ACTION_DOWN:
                 touchFlag = getTouchedPath(x, y);
                 currentFlag = touchFlag;
+                Log.e(TAG, "onTouchEvent: "+x+"-"+y);
+                Log.e(TAG, "onTouchEvent: "+touchFlag);
                 break;
             case MotionEvent.ACTION_MOVE:
                 currentFlag = getTouchedPath(x, y);

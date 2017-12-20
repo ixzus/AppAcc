@@ -10,11 +10,14 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <!--<com.eeepay.awdiget.demo.RemoteControlView-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="300dp" />-->
+        <com.eeepay.awdiget.demo.RemoteControlView
+            android:layout_width="match_parent"
+            android:layout_height="300dp" />
+        
+
         <com.eeepay.awdiget.demo.RemoteControlMenu
             android:layout_width="match_parent"
             android:layout_height="300dp" />
+
     </LinearLayout>
 </ScrollView>

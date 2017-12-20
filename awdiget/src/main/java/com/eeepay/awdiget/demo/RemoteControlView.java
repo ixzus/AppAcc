@@ -8,6 +8,7 @@ import android.graphics.RectF;
 import android.graphics.Region;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -16,6 +17,7 @@ import android.view.View;
  */
 
 public class RemoteControlView extends CustomView {
+    private static final String TAG = "RemoteControlView";
     private Path upPath, rightPaht, downPath, leftPaht, centerPath;
     private Region upRegion, rightRegion, downRegion, leftRegion, centerRegion;
 
@@ -144,9 +146,10 @@ public class RemoteControlView extends CustomView {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        Log.e(TAG, "onTouchEvent: " );
         float[] pts = new float[2];
-        pts[0] = event.getRawX();
-        pts[1] = event.getRawY();
+        pts[0] = event.getX();
+        pts[1] = event.getY();
         mMapMatrix.mapPoints(pts);
         int x = (int) pts[0];
         int y = (int) pts[1];
@@ -154,6 +157,8 @@ public class RemoteControlView extends CustomView {
             case MotionEvent.ACTION_DOWN:
                 touchFlag = getTouchedPaht(x, y);
                 currentFalg = touchFlag;
+                Log.e(TAG, "onTouchEvent: "+x+"*"+y);
+                Log.e(TAG, "onTouchEvent: "+touchFlag);
                 break;
             case MotionEvent.ACTION_MOVE:
                 currentFalg = getTouchedPaht(x, y);
@@ -172,8 +177,8 @@ public class RemoteControlView extends CustomView {
                     } else if (currentFalg == mLeft) {
                         onItemClickListener.onLeftClick();
                     }
-                    touchFlag = currentFalg = -1;
                 }
+                touchFlag = currentFalg = -1;
                 break;
             case MotionEvent.ACTION_CANCEL:
                 touchFlag = -1;
