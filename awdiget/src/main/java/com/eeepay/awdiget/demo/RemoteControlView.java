@@ -166,14 +166,17 @@ public class RemoteControlView extends CustomView {
         rightdownPath.addRect(rectF2, Path.Direction.CW);
         rightdownPath.op(path1, Path.Op.DIFFERENCE);
         reRD.setPath(rightdownPath, globalRegion);
+//        reRU.translate(0, 2*y1+h1,reRD);
 
         leftdownPath.addRect(rectF3, Path.Direction.CW);
         leftdownPath.op(path1, Path.Op.DIFFERENCE);
         reLD.setPath(leftdownPath, globalRegion);
+//        reRD.translate(-2*x1-w1, 0,reLD);
 
         leftupPath.addRect(rectF4, Path.Direction.CW);
         leftupPath.op(path1, Path.Op.DIFFERENCE);
         reLU.setPath(leftupPath, globalRegion);
+//        reRU.translate(-2*x1-w1, 0,reLU);
 
     }
 
