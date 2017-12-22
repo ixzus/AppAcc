@@ -1,1 +1,1 @@
-include ':app', ':acc', ':ainject', ':awdiget', ':aweb','lib_base'
+include ':app', ':acc', ':ainject', ':awdiget', ':aweb', 'lib_base', ':X5WebDemo'
